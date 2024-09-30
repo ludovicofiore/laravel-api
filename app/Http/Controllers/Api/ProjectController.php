@@ -37,6 +37,20 @@ class ProjectController extends Controller
 
         $project = Project::where('slug', $slug)->with('technology', 'Type')->first();
 
-        return response()->json($project);
+        if($project){
+            $success = true;
+
+            if($project->cover_img) {
+                $project->cover_img = asset('storage/' . $project->cover_img);
+            }else {
+                $project->cover_img = '/img/no-image.jpg';
+            }
+
+        }else {
+            $success = false;
+        }
+
+
+        return response()->json(compact('project', 'success'));
     }
 }
