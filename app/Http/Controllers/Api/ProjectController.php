@@ -50,7 +50,31 @@ class ProjectController extends Controller
             $success = false;
         }
 
-
         return response()->json(compact('project', 'success'));
+    }
+
+
+    public function projectsByType($slug) {
+        $type = Type::where('slug', $slug)->with('projects')->first();
+
+        if($type){
+            $success = true;
+        }else {
+            $success = false;
+        }
+
+        return response()->json(compact('success', 'type'));
+    }
+
+    public function projectsByTechnology($slug) {
+        $technology = Technology::where('slug', $slug)->with('project')->first();
+
+        if($technology){
+            $success = true;
+        }else {
+            $success = false;
+        }
+
+        return response()->json(compact('success', 'technology'));
     }
 }
