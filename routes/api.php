@@ -20,3 +20,5 @@ use App\Http\Controllers\Api\ProjectController;
 // });
 
 Route::get('/', [ProjectController::class, 'index']);
+Route::get('/technologies', [ProjectController::class, 'technologies']);
+Route::get('/types', [ProjectController::class, 'types']);
