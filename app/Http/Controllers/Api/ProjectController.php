@@ -32,4 +32,11 @@ class ProjectController extends Controller
         return response()->json($types);
 
     }
+
+    public function projectByslug($slug) {
+
+        $project = Project::where('slug', $slug)->with('technology', 'Type')->first();
+
+        return response()->json($project);
+    }
 }
