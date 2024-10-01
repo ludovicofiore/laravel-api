@@ -71,6 +71,7 @@ class ProjectController extends Controller
 
         if($technology){
             $success = true;
+
         }else {
             $success = false;
         }

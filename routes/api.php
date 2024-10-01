@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\ProjectController;
 //     return $request->user();
 // });
 
-Route::get('/', [ProjectController::class, 'index']);
+Route::get('/works', [ProjectController::class, 'index']);
 Route::get('/technologies', [ProjectController::class, 'technologies']);
 Route::get('/types', [ProjectController::class, 'types']);
 
