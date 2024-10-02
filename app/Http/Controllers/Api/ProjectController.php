@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -37,13 +38,27 @@ class ProjectController extends Controller
 
         $project = Project::where('slug', $slug)->with('technology', 'Type')->first();
 
+        // if($project){
+        //     $success = true;
+
+        //     if($project->cover_img) {
+        //         $project->cover_img = asset('storage/' . $project->cover_img);
+        //     }else {
+        //         $project->cover_img = '/img/no-image.jpg';
+        //     }
+
+        // }else {
+        //     $success = false;
+        // }
+
+        // gestione immagine in frontend
         if($project){
             $success = true;
 
             if($project->cover_img) {
-                $project->cover_img = asset('storage/' . $project->cover_img);
+                $project->cover_img = Storage::url($project->cover_img);
             }else {
-                $project->cover_img = '/img/no-image.jpg';
+                $project->cover_img = Storage::url('no-image.jpg');
             }
 
         }else {
