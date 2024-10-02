@@ -38,7 +38,7 @@
         <div>
             <h4>Immagine</h4>
             <img src="{{ asset('storage/' . $projects->cover_img) }}" alt="{{ $projects->original_img_name }}"
-                onerror="this.src='/img/no-image.jpg'">
+                onerror="this.src='{{ Storage::url('no-image.jpg') }}'">
         </div>
 
         <div>
