@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/types', [ProjectController::class, 'types']);
 Route::get('project-by-slug/{slug}', [ProjectController::class, 'projectByslug']);
 Route::get('projects-by-type/{slug}', [ProjectController::class, 'projectsBytype']);
 Route::get('projects-by-technology/{slug}', [ProjectController::class, 'projectsByTechnology']);
+Route::post('/send-email', [LeadController::class, 'store']);
